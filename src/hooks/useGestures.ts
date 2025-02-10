@@ -205,7 +205,11 @@ export const useGestures = ({
       if (isDoubleTapEnabled) {
         moveIntoView();
       } else {
-        reset();
+        if (scale.value > 1) {
+          moveIntoView();
+        } else {
+          reset();
+        }
       }
       isInteracting.current = false;
       onInteractionEnd?.();
